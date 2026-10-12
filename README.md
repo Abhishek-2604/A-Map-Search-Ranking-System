@@ -1,4 +1,4 @@
-# Wayfinder - Map Search Ranking with Learning to Rank algorithm (real data, live search)
+# Map Search Ranking with Learning to Rank algorithm (real data, live search)
 
 Trained a **LambdaMART** learning-to-rank model over
 a **real restaurant dataset**, then let people type **real search queries**
