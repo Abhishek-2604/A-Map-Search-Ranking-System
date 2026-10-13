@@ -41,16 +41,7 @@ python3 src/train.py                # train models/lambdamart.{txt,json}
 python3 src/export_for_ui.py        # export models/model_min.json + static/restaurants.json
 ```
 
-Then rebuild `index.html`:
-```bash
-python3 -c "
-model = open('models/model_min.json', encoding='utf-8').read()
-restaurants = open('static/restaurants.json', encoding='utf-8').read()
-tpl = open('ui_template.html', encoding='utf-8').read()
-open('index.html','w',encoding='utf-8').write(tpl.replace('__MODEL_JSON__', model).replace('__RESTAURANT_JSON__', restaurants))
-"
-```
-Or just open the pre-built `index.html` directly - no server needed.
+Then just open the pre-built `index.html` directly - no server needed.
 
 ## The algorithm: LambdaMART
 
@@ -66,27 +57,5 @@ Result: **NDCG@5 ≈ 0.955**. `text_match` and `rating` dominate feature
 importance, followed by `is_open` and `distance_km` - sensible for a
 restaurant search ranker.
 
-## The UI (`index.html`)
-
-Trained trees are stripped to `{split_feature, threshold, children,
-leaf_value}` and a small JS function walks them and sums leaf values - real
-model inference in the browser, not a mock.
-
-- **Type any real search** ("tacos", "pizza", "bar", "breakfast", a
-  restaurant's own name…) - the query is matched live against each
-  restaurant's real name and cuisine tags to produce a `text_match` feature,
-  exactly like the `text_match` feature the model was trained on.
-- **Pick a time of day** (Morning / Lunch / Dinner / Late night) - "open now"
-  is computed from each restaurant's real weekly hours for *today's* actual
-  weekday, so closed places get pushed down or greyed out live.
-- Results **re-rank with a FLIP animation** as you type (debounced ~120ms) -
-  cards and map pins smoothly slide to their new position rather than
-  jumping, so you can see the ranking change happen rather than just the
-  end state.
-- A feature-importance panel shows what the model actually learned to weight
-  during training.
-
-This version is intentionally minimal: no filter sliders, no ranking-mode
-toggle - the model handles the tradeoffs, and the only inputs are a real
 search box and a time-of-day picker.
 
