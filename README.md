@@ -1,12 +1,11 @@
-# Map Search Ranking with Learning to Rank algorithm (real data, live search)
+# Map Search Ranking with Learning to Rank algorithm
 
 Trained a **LambdaMART** learning-to-rank model over
-a **real restaurant dataset**, then let people type **real search queries**
-into a live, animated browser UI that runs the actual trained model
+a **real restaurant dataset**, then integrated it with browser UI that runs the actual trained model
 client-side.
 
 ```
-MAP-SEARch-A-Map-Search-Ranking-System/
+A-Map-Search-Ranking-System/
 ├── data/
 │   ├── real_geoplaces2.csv        raw UCI dataset (places, real GPS coords)
 │   ├── real_chefmozcuisine.csv    raw UCI dataset (real cuisine tags)
