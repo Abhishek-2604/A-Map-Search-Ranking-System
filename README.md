@@ -57,5 +57,4 @@ Result: **NDCG@5 ≈ 0.955**. `text_match` and `rating` dominate feature
 importance, followed by `is_open` and `distance_km` - sensible for a
 restaurant search ranker.
 
-search box and a time-of-day picker.
 
