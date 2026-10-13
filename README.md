@@ -19,7 +19,6 @@ A-Map-Search-Ranking-System/
 │   └── export_for_ui.py            exports trained trees + real catalog for the UI
 ├── models/                         trained model (native + JSON + minimal JSON)
 ├── static/restaurants.json         real restaurant catalog, UI-ready
-├── ui_template.html                UI source (placeholders for injected data)
 └── index.html                       the finished, self-contained demo - open this
 ```
 
